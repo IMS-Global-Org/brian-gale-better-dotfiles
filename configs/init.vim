@@ -18,6 +18,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'mxw/vim-jsx'
   Plug 'isruslan/vim-es6'
   Plug 'pangloss/vim-javascript'
+  Plug 'rust-lang/rust.vim'
+  Plug 'rhysd/vim-crystal'
   " Plug 'yggdroot/indentline'
   Plug 'rstacruz/vim-closer'
   Plug 'jiangmiao/auto-pairs'
@@ -57,8 +59,8 @@ call plug#begin('~/.vim/plugged')
   " Plug 'metakirby5/codi.vim'
 
   Plug 'inkarkat/vim-ingo-library'
-
-  call plug#end()
+  
+call plug#end()
 
 """""""""
 "" VIM ""
@@ -250,8 +252,6 @@ endif
 " These 2 packages require python 3 to run
 " Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 " Plug 'fishbullet/deoplete-ruby'
-
-
 
 " Spelling
 set spell
