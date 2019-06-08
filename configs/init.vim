@@ -1,3 +1,8 @@
+set runtimepath^=~/.vim runtimepath+=/.vim/after
+let &packpath = &runtimepath
+source ~/.vimrc
+
+
 let mapleader="\,"
 
 " Plugins
@@ -208,7 +213,7 @@ nnoremap <leader>cc NERDComToggleComment<CR>
 " nnoremap <leader>go :Goyo!<CR>
 
 " Closetag
-let g:closetag_filenames = "*.html.erb,*.html,*.xhtml,*.phtml, *.js, *.jsx"
+let g:closetag_filenames = "*.html.erb,*.html,*.xhtml,*.phtml, *.js, *jsx"
 
 " Ale
 map <leader>at :ALEToggle<CR>
@@ -220,7 +225,7 @@ map <leader>at :ALEToggle<CR>
 " Colors defined in .bashrc
 " https://github.com/junegunn/fzf/wiki/Color-schemes
 nnoremap <silent> <C-p> :FZF<CR>
-nnoremap <silent>f :Ag<CR>
+nnoremap <leader>f :Ag<CR>
 let g:fzf_layout = { 'down': '~60%' }
 
 " Vim Fugitive

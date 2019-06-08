@@ -28,7 +28,7 @@ if [[ $answer != "n" ]] && [[ $answer != "N" ]] ; then
 	rm -f "$HOME/.bash_profile"
   rm -f "$HOME/.fzf-tmux.sh"
   rm -f "$HOME/.bin/tmuxinator.bash"
-k
+
   ## Add new symlinks
   echo "[setup.sh] Symlinking config files..."
 	ln -s "$PWD/configs/.tmux.conf" "$HOME/.tmux.conf"
