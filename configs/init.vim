@@ -1,3 +1,8 @@
+set runtimepath^=~/.vim runtimepath+=/.vim/after
+let &packpath = &runtimepath
+source ~/.vimrc
+
+
 let mapleader="\,"
 
 " Plugins
@@ -38,6 +43,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'w0rp/ale' " Linting
   Plug 'ervandew/supertab' " Tab completion
   Plug 'tpope/vim-endwise' " Ruby end tag completion
+  Plug 'mkitt/tabline.vim'
+  Plug 'inkarkat/vim-spellcheck'
+  Plug 'tpope/vim-surround'
+  Plug 'mileszs/ack.vim'
 
   " VIM
   Plug 'guns/xterm-color-table.vim'
@@ -46,7 +55,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'djoshea/vim-autoread'
   Plug 'ap/vim-buftabline'
   " Plug 'metakirby5/codi.vim'
-call plug#end()
+
+  Plug 'inkarkat/vim-ingo-library'
+
+  call plug#end()
 
 """""""""
 "" VIM ""
@@ -199,7 +211,7 @@ nnoremap <leader>cc NERDComToggleComment<CR>
 " nnoremap <leader>go :Goyo!<CR>
 
 " Closetag
-let g:closetag_filenames = "*.html.erb,*.html,*.xhtml,*.phtml, *.js"
+let g:closetag_filenames = "*.html.erb,*.html,*.xhtml,*.phtml, *.js, *jsx"
 
 " Ale
 map <leader>at :ALEToggle<CR>
@@ -211,7 +223,7 @@ map <leader>at :ALEToggle<CR>
 " Colors defined in .bashrc
 " https://github.com/junegunn/fzf/wiki/Color-schemes
 nnoremap <silent> <C-p> :FZF<CR>
-nnoremap <silent>f :Ag<CR>
+nnoremap <leader>f :Ag<CR>
 let g:fzf_layout = { 'down': '~60%' }
 
 " Vim Fugitive
@@ -238,3 +250,13 @@ endif
 " These 2 packages require python 3 to run
 " Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 " Plug 'fishbullet/deoplete-ruby'
+
+
+
+" Spelling
+set spell
+set spelllang=en
+
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
