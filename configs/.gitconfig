@@ -11,3 +11,5 @@
 	lg = log -p
 [push]
 	default = simple
+[core]
+	excludesfile = /Users/brennicklangston/.gitignore_global
