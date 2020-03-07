@@ -63,6 +63,16 @@ if [[ $answer == "y" ]] || [[ $answer == "Y" ]] ; then
   checkAndInstallPackage "npm"
   checkAndInstallPackage "cmatrix"
   checkAndInstallPackage "tig"
+  checkAndInstallPackage 'zsh-history-substring-search'
+
+  echo "[install-apps] checking oh-my-zsh settings"
+  GIT=`which git`
+  if [[ $GIT != "" ]]; then
+    echo "[install-apps] loading oh-my-zsh history-substring-search plugin"
+    git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
+  else
+    echo "oh-my-zsh history substring search not installed"
+  fi
 
   echo "[install-apps] Checking RVM..."
 

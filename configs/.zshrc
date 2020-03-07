@@ -68,7 +68,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -134,6 +134,9 @@ reset=$(tput sgr0)
 #export PROMPT_COMMAND='__git_ps1 "\u@\h:\W" "\\\$ ";'
 export PROMPT_COMMAND='__git_ps1 "\[$reset\][\[$blue\]\W\[$reset\]]" " ~ ";'
 # export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+
+# zsh command line completion from history
+source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 cat << "EOF"
 
