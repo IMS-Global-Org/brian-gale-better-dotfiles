@@ -3,10 +3,17 @@
 ![Terminals Forever](https://www.commitstrip.com/wp-content/uploads/2016/12/Strip-Lignes-de-commande-english650-final-2.jpg)
 
 This repo contains my dotfiles, as well as a few scripts used to make maintaining them on multiple machines simpler.
+
 ## Installation And Setup
 Must install in order
-- $ ./install_apps.sh
-- $ ./setup.sh
+- `$ ./install_apps.sh` installs required applications
+- `$ ./setup.sh` links and copies all the configuration files from the config folder
+- You must **RESTART** the machine to ensure the 'Powerline' fonts are recognized by the system
+  - This affects:
+    - all airline plugins fonts used in vim
+    - all fonts used in the 'tmux' title bar
+    - any other additional 'Powerline' font dependant systems
+
 ## TMux Config
 - Prefix - CTRL+ a
 - Rename Session - <Prefix> + $
