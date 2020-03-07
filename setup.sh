@@ -37,6 +37,8 @@ if [[ $answer != "n" ]] && [[ $answer != "N" ]] ; then
 	ln -s "$PWD/configs/.gitconfig" "$HOME/.gitconfig"
 	ln -s "$PWD/configs/.bash_profile" "$HOME/.bash_profile"
 	ln -s "$PWD/configs/.bashrc" "$HOME/.bashrc"
+	cat "$PWD/configs/.zshrc" >> "$HOME/.zshrc"
+	ln -s "$PWD/configs/.vimrc" "$HOME/.vimrc"
   ln -s "$PWD/scripts/.fzf-tmux.sh" "$HOME/.fzf-tmux.sh"
 
   mkdir -p ~/.bin
