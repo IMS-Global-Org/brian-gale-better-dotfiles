@@ -52,6 +52,7 @@ if [[ $answer == "y" ]] || [[ $answer == "Y" ]] ; then
   brew doctor
   brew update
 
+  checkAndInstallPackage "zsh"
   checkAndInstallPackage "neovim"
   checkAndInstallPackage "tmux"
   checkAndInstallPackage "git"
@@ -63,6 +64,15 @@ if [[ $answer == "y" ]] || [[ $answer == "Y" ]] ; then
   checkAndInstallPackage "npm"
   checkAndInstallPackage "cmatrix"
   checkAndInstallPackage "tig"
+
+  echo "[install-apps] Installing oh-my-zsh"
+  SH=`which sh`
+  if [[ $SH != "" ]]; then
+    echo "[install-apps] loading oh-my-zsh"
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  else
+    echo "[install-apps] oh-my-zsh installation failed"
+  fi
 
   echo "[install-apps] checking oh-my-zsh zsh-autosuggestions"
   GIT=`which git`
