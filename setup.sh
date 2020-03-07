@@ -25,6 +25,7 @@ if [[ $answer != "n" ]] && [[ $answer != "N" ]] ; then
 	rm -f "$HOME/.config/nvim/init.vim"
 	rm -f "$HOME/.gitconfig"
 	rm -f "$HOME/.bashrc"
+	rm -f "$HOME/.zshrc"
 	rm -f "$HOME/.bash_profile"
   rm -f "$HOME/.fzf-tmux.sh"
   rm -f "$HOME/.bin/tmuxinator.bash"
@@ -37,7 +38,7 @@ if [[ $answer != "n" ]] && [[ $answer != "N" ]] ; then
 	ln -s "$PWD/configs/.gitconfig" "$HOME/.gitconfig"
 	ln -s "$PWD/configs/.bash_profile" "$HOME/.bash_profile"
 	ln -s "$PWD/configs/.bashrc" "$HOME/.bashrc"
-	cat "$PWD/configs/.zshrc" >> "$HOME/.zshrc"
+	ln -s "$PWD/configs/.zshrc" "$HOME/.zshrc"
 	ln -s "$PWD/configs/.vimrc" "$HOME/.vimrc"
   ln -s "$PWD/scripts/.fzf-tmux.sh" "$HOME/.fzf-tmux.sh"
 
