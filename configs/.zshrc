@@ -140,11 +140,10 @@ source /usr/local/share/zsh-history-substring-search/zsh-history-substring-searc
 
 cat << "EOF"
 
-                `-:-.   ,-;"`-:-.   ,-;"`-:-.   ,-;"`-:-.   ,-;"
-                   `=`,'=/     `=`,'=/     `=`,'=/     `=`,'=/
-                     y==/        y==/        y==/        y==/
-                   ,=,-<=`.    ,=,-<=`.    ,=,-<=`.    ,=,-<=`.
-                ,-'-'   `-=_,-'-'   `-=_,-'-'   `-=_,-'-'   `-=_
+       `-:-.   ,-;"`-:-.   ,-;"`-:-.   ,-;"`-:-.   ,-;"
+          `=`,'=/     `=`,'=/     `=`,'=/     `=`,'=/
+            y==/        y==/        y==/        y==/
+          ,=,-<=`.    ,=,-<=`.    ,=,-<=`.    ,=,-<=`.
+       ,-'-'   `-=_,-'-'   `-=_,-'-'   `-=_,-'-'   `-=_
 
--- Not only is the Universe stranger than we think, it is stranger than we can think. --
 EOF
