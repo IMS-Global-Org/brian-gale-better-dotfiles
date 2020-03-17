@@ -31,6 +31,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-fugitive'
   Plug 'airblade/vim-gitgutter'
   Plug 'rhysd/git-messenger.vim'
+  Plug 'tveskag/nvim-blame-line'
   " Plug 'mhinz/vim-signify'
 
   " Views
@@ -45,7 +46,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'w0rp/ale' " Linting
   Plug 'ervandew/supertab' " Tab completion
   Plug 'tpope/vim-endwise' " Ruby end tag completion
-  Plug 'mkitt/tabline.vim'
   Plug 'inkarkat/vim-spellcheck'
   Plug 'tpope/vim-surround'
   Plug 'mileszs/ack.vim'
@@ -56,9 +56,12 @@ call plug#begin('~/.vim/plugged')
   " Plug 'junegunn/goyo.vim'
   Plug 'djoshea/vim-autoread'
   Plug 'ap/vim-buftabline'
+  Plug 'mkitt/tabline.vim'
   " Plug 'metakirby5/codi.vim'
 
   Plug 'inkarkat/vim-ingo-library'
+  " Plug 'MattesGroeger/vim-bookmarks'
+  Plug 'stephpy/vim-yaml'
   
 call plug#end()
 
@@ -230,6 +233,8 @@ let g:fzf_layout = { 'down': '~60%' }
 
 " Vim Fugitive
 nnoremap <silent> <Leader>gb :Gblame<CR>
+" Vim Nvim-Blame-Line
+nmap <silent> <leader>b :ToggleBlameLine<CR>
 
 " Airline
 let g:airline_theme='molokai'

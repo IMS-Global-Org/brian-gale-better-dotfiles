@@ -1,15 +1,23 @@
 [user]
 	name = Brennick Langston
 	email = brennick.langston@verisys.com
+	signingkey = 8D98F00BF5F6E254
 
 [alias]
-	st = status
-	ci = commit
-	br = branch
-	co = checkout
-	df = diff
-	lg = log -p
+  st = status
+  ci = commit
+  br = branch
+  co = checkout
+  ca = checkout -a
+  cb = checkout -b
+  df = diff
+  lg = log -p
+  po = push origin
 [push]
 	default = simple
 [core]
 	excludesfile = /Users/brennicklangston/.gitignore_global
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg

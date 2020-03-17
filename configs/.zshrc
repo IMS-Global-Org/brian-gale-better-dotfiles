@@ -135,6 +135,28 @@ reset=$(tput sgr0)
 export PROMPT_COMMAND='__git_ps1 "\[$reset\][\[$blue\]\W\[$reset\]]" " ~ ";'
 # export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
+# settings for rbenv
+export PATH=/Users/brennicklangston/.rbenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+eval export PATH="/Users/brennicklangston/.rbenv/shims:${PATH}"
+export RBENV_SHELL=zsh
+source '/usr/local/Cellar/rbenv/1.1.2/libexec/../completions/rbenv.zsh'
+command rbenv rehash 2>/dev/null
+rbenv() {
+  local command
+  command="${1:-}"
+  if [ "$#" -gt 0 ]; then
+    shift
+  fi
+
+  case "$command" in
+  rehash|shell)
+    eval "$(rbenv "sh-$command" "$@")";;
+  *)
+    command rbenv "$command" "$@";;
+  esac
+}
+alias rspecp="rm -rf coverage && bundle && bin/rails db:environment:set RAILS_ENV=test && RAILS_ENV=test rails parallel:drop && RAILS_ENV=test rails parallel:create && RAILS_ENV=test rails parallel:migrate && RAILS_ENV=test rails parallel:spec"
+
 cat << "EOF"
 
        `-:-.   ,-;"`-:-.   ,-;"`-:-.   ,-;"`-:-.   ,-;"
