@@ -15,19 +15,12 @@ call plug#begin('~/.vim/plugged')
   Plug 'jeetsukumaran/vim-buffergator'
 
   " JSX File Syntax
-  " Bad
-  "Plug 'pangloss/vim-javascript'
-  "Plug 'isruslan/vim-es6'
-  " Good
-  Plug 'Emigre/vim-javascript'
-  Plug 'Emigre/vim-jsx'
-  Plug 'mxw/vim-jsx'
+  Plug 'yuezk/vim-js'
+  Plug 'maxmellon/vim-jsx-pretty'
 
   " Sytax
   Plug 'vim-ruby/vim-ruby'
   Plug 'rust-lang/rust.vim'
-  " Plug 'git@github.com:rhysd/vim-crystal.git'
-  " Plug 'rhysd/vim-crystal'
   " Plug 'yggdroot/indentline'
   Plug 'rstacruz/vim-closer'
   Plug 'jiangmiao/auto-pairs'
@@ -39,11 +32,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-fugitive'
   Plug 'airblade/vim-gitgutter'
   Plug 'rhysd/git-messenger.vim'
+  Plug 'tveskag/nvim-blame-line'
   " Plug 'mhinz/vim-signify'
 
   " Views
-  " Plug 'cocopon/iceberg.vim'
-  " Plug 'joshdick/onedark.vim'
   Plug 'tomasr/molokai'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
@@ -53,7 +45,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'w0rp/ale' " Linting
   Plug 'ervandew/supertab' " Tab completion
   Plug 'tpope/vim-endwise' " Ruby end tag completion
-  Plug 'mkitt/tabline.vim'
   Plug 'inkarkat/vim-spellcheck'
   Plug 'tpope/vim-surround'
   Plug 'mileszs/ack.vim'
@@ -64,6 +55,7 @@ call plug#begin('~/.vim/plugged')
   " Plug 'junegunn/goyo.vim'
   Plug 'djoshea/vim-autoread'
   Plug 'ap/vim-buftabline'
+  Plug 'mkitt/tabline.vim'
   " Plug 'metakirby5/codi.vim'
 
   Plug 'inkarkat/vim-ingo-library'
@@ -72,6 +64,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'elixir-editors/vim-elixir'
   Plug 'slashmili/alchemist.vim'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+  " Plug 'MattesGroeger/vim-bookmarks'
+  Plug 'stephpy/vim-yaml'
   
 call plug#end()
 
@@ -225,8 +220,20 @@ nnoremap <leader>cc NERDComToggleComment<CR>
 " nnoremap <leader>gg :Goyo<CR>
 " nnoremap <leader>go :Goyo!<CR>
 
+" vim-jsx-pretty
+let g:vim_jsx_pretty_template_tags = ['html', 'jsx', 'js']
+let g:vim_jsx_pretty_highlight_close_tag = 1
+let g:vim_jsx_pretty_colorful_config = 1
+
 " Closetag
 let g:closetag_filenames = "*.html.erb,*.html,*.xhtml,*.phtml,*.js,*jsx"
+let g:closetag_xhtml_filetypes = 'xhtml,jsx,js'
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.js'
+let g:closetag_regions = {
+    \ 'typescript.tsx': 'jsxRegion,tsxRegion',
+    \ 'javascript.jsx': 'jsxRegion',
+    \ 'javascript.js': 'jsxRegion',
+    \ }
 
 " Ale
 map <leader>at :ALEToggle<CR>
@@ -243,6 +250,8 @@ let g:fzf_layout = { 'down': '~60%' }
 
 " Vim Fugitive
 nnoremap <silent> <Leader>gb :Gblame<CR>
+" Vim Nvim-Blame-Line
+nmap <silent> <leader>b :ToggleBlameLine<CR>
 
 " Airline
 let g:airline_theme='molokai'
