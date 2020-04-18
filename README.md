@@ -1,4 +1,4 @@
-# Briant's Better Dotfiles
+# Brennick's Better Dotfiles
 
 ![Terminals Forever](https://www.commitstrip.com/wp-content/uploads/2016/12/Strip-Lignes-de-commande-english650-final-2.jpg)
 

@@ -9,17 +9,25 @@ let mapleader="\,"
 call plug#begin('~/.vim/plugged')
   " File searching
   Plug 'scrooloose/nerdtree'
+  Plug 'scrooloose/syntastic'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
   Plug 'junegunn/fzf.vim'
   Plug 'jeetsukumaran/vim-buffergator'
 
+  " JSX File Syntax
+  " Bad
+  "Plug 'pangloss/vim-javascript'
+  "Plug 'isruslan/vim-es6'
+  " Good
+  Plug 'Emigre/vim-javascript'
+  Plug 'Emigre/vim-jsx'
+  Plug 'mxw/vim-jsx'
+
   " Sytax
   Plug 'vim-ruby/vim-ruby'
-  Plug 'mxw/vim-jsx'
-  Plug 'isruslan/vim-es6'
-  Plug 'pangloss/vim-javascript'
   Plug 'rust-lang/rust.vim'
-  Plug 'rhysd/vim-crystal'
+  " Plug 'git@github.com:rhysd/vim-crystal.git'
+  " Plug 'rhysd/vim-crystal'
   " Plug 'yggdroot/indentline'
   Plug 'rstacruz/vim-closer'
   Plug 'jiangmiao/auto-pairs'
@@ -59,6 +67,11 @@ call plug#begin('~/.vim/plugged')
   " Plug 'metakirby5/codi.vim'
 
   Plug 'inkarkat/vim-ingo-library'
+
+  " Elixir, Erlang, Pheonix
+  Plug 'elixir-editors/vim-elixir'
+  Plug 'slashmili/alchemist.vim'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
   
 call plug#end()
 
@@ -213,7 +226,7 @@ nnoremap <leader>cc NERDComToggleComment<CR>
 " nnoremap <leader>go :Goyo!<CR>
 
 " Closetag
-let g:closetag_filenames = "*.html.erb,*.html,*.xhtml,*.phtml, *.js, *jsx"
+let g:closetag_filenames = "*.html.erb,*.html,*.xhtml,*.phtml,*.js,*jsx"
 
 " Ale
 map <leader>at :ALEToggle<CR>

@@ -10,8 +10,6 @@ if [ -f ~/.bashrc ]; then
   . ~/.bashrc
 fi
 
-export PATH="$HOME/.cargo/bin:$PATH"
-
 # rbenv variables
 export PATH=/Users/brennicklangston/.rbenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/brennicklangston/.fzf/bin
 eval export PATH="/Users/brennicklangston/.rbenv/shims:${PATH}"
@@ -56,3 +54,5 @@ rbenv() {
     command rbenv "$command" "$@";;
   esac
 }
+
+export PATH="$HOME/.cargo/bin:$PATH"
