@@ -7,12 +7,18 @@ This repo contains my dotfiles, as well as a few scripts used to make maintainin
 ## Installation And Setup
 Must install in order
 - `$ ./install_apps.sh` installs required applications
+  - You might need to run this command as a `sudo` user to install a couple of the apps. Brew will complain for the majority of the installed apps, however there will be a few that will be installed despite the brew issues.
+  - Yes, this means the script might need to be run a second time to get everything installed correctly
 - `$ ./setup.sh` links and copies all the configuration files from the config folder
 - You must **RESTART** the machine to ensure the 'Powerline' fonts are recognized by the system
   - This affects:
     - all airline plugins fonts used in vim
     - all fonts used in the 'tmux' title bar
     - any other additional 'Powerline' font dependant systems
+- To get the Tmux battery/cpu/mem/date to show up correctly the following commnd must be executed from within the Tmux env
+  - `<prefix> + I`
+  - `<prefix>` should be the following `Ctl+a` once the `./install-apps.sh` and `./setup.sh` scripts are run
+- The `~/.zshrc` file needs to have the `oh-my-zsh.sh` pathway updated with your local system's user name or Oh-My-Zsh will not load and work correctly
 
 ## TMux Config
 - Prefix - CTRL+ a
