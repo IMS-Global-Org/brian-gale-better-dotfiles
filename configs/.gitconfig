@@ -1,7 +1,6 @@
 [user]
 	name = Brennick Langston
 	email = brennick.sci@gmail.com
-	signingkey = 07E4967C0DE7A3DC
 
 [alias]
   st = status
@@ -18,6 +17,6 @@
 [core]
 	excludesfile = /Users/brennicklangston/.gitignore_global
 [commit]
-	gpgsign = true
+	gpgsign = false
 [gpg]
 	program = gpg

@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/brennicklangston/.oh-my-zsh"
+export ZSH="/home/blangston/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -136,9 +136,9 @@ export PROMPT_COMMAND='__git_ps1 "\[$reset\][\[$blue\]\W\[$reset\]]" " ~ ";'
 # export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
 # settings for rbenv
-export PATH=/Users/brennicklangston/.rbenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
-eval export PATH="/Users/brennicklangston/.rbenv/shims:${PATH}"
-export RBENV_SHELL=zsh
+#export PATH=/Users/brennicklangston/.rbenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+#eval export PATH="/Users/brennicklangston/.rbenv/shims:${PATH}"
+#export RBENV_SHELL=zsh
 #source '/usr/local/Cellar/rbenv/1.1.2/libexec/../completions/rbenv.zsh'
 #command rbenv rehash 2>/dev/null
 #rbenv() {
@@ -155,7 +155,13 @@ export RBENV_SHELL=zsh
     #command rbenv "$command" "$@";;
   #esac
 #}
-alias rspecp="rm -rf coverage && bundle && bin/rails db:environment:set RAILS_ENV=test && RAILS_ENV=test rails parallel:drop && RAILS_ENV=test rails parallel:create && RAILS_ENV=test rails parallel:migrate && RAILS_ENV=test rails parallel:spec"
+#alias rspecp="rm -rf coverage && bundle && bin/rails db:environment:set RAILS_ENV=test && RAILS_ENV=test rails parallel:drop && RAILS_ENV=test rails parallel:create && RAILS_ENV=test rails parallel:migrate && RAILS_ENV=test rails parallel:spec"
+
+# Rust programming language settings
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# Ruby RVM Settings
+source "/etc/profile.d/rvm.sh"
 
 cat << "EOF"
 
