@@ -60,13 +60,13 @@ call plug#begin('~/.vim/plugged')
 
   Plug 'inkarkat/vim-ingo-library'
 
-  " Elixir, Erlang, Pheonix
-  Plug 'elixir-editors/vim-elixir'
-  Plug 'slashmili/alchemist.vim'
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  "" Elixir, Erlang, Pheonix
+  "Plug 'elixir-editors/vim-elixir'
+  "Plug 'slashmili/alchemist.vim'
+  "Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-  " Plug 'MattesGroeger/vim-bookmarks'
-  Plug 'stephpy/vim-yaml'
+  "" Plug 'MattesGroeger/vim-bookmarks'
+  "Plug 'stephpy/vim-yaml'
   
 call plug#end()
 
