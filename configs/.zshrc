@@ -172,3 +172,11 @@ cat << "EOF"
        ,-'-'   `-=_,-'-'   `-=_,-'-'   `-=_,-'-'   `-=_
 
 EOF
+source "/etc/profile.d/rvm.sh"
+source "/etc/profile.d/rvm.sh"
+source "/etc/profile.d/rvm.sh"
+source "/etc/profile.d/rvm.sh"
+source "/etc/profile.d/rvm.sh"
+source "/etc/profile.d/rvm.sh"
+source "/etc/profile.d/rvm.sh"
+source "/etc/profile.d/rvm.sh"
