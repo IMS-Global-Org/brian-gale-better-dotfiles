@@ -17,6 +17,30 @@ function font_revision() {
 echo -n "Link dotfiles and install packages (Y/n)?"; read answer
 if [[ $answer != "n" ]] && [[ $answer != "N" ]] ; then
 
+	# Backup old configuration files
+	mkdir -pv "$HOME/.old_tmux_config_files"
+
+	if [[ ! -d "$HOME/.old_tmux_config_files" ]] ; then
+		echo "Exiting Early!"
+		exit 1
+	fi
+
+	# Copy
+	echo "[setup.sh] Copying old config files"
+	cp -iva "$HOME/.tmux.conf" "$HOME/.old_tmux_config_files/.tmux.conf"
+	cp -iva "$HOME/.git-completion.sh" "$HOME/.old_tmux_config_files/.git-completion.sh"
+	cp -iva "$HOME/.git-prompt.sh" "$HOME/.old_tmux_config_files/.git-prompt.sh"
+	cp -iva "$HOME/.config/nvim/init.vim" "$HOME/.old_tmux_config_files/.config/nvim/init.vim"
+	cp -iva "$HOME/.gitconfig" "$HOME/.old_tmux_config_files/.gitconfig"
+	cp -iva "$HOME/.bashrc" "$HOME/.old_tmux_config_files/.bashrc"
+	cp -iva "$HOME/.bash_profile" "$HOME/.old_tmux_config_files/.bash_profile"
+	cp -iva "$HOME/.zshrc" "$HOME/.old_tmux_config_files/.zshrc"
+	cp -iva "$HOME/.zshrc_history" "$HOME/.old_tmux_config_files/.zshrc_history"
+	cp -iva "$HOME/.zshrc.pre-oh-my-zsh" "$HOME/.old_tmux_config_files/.zshrc.pre-oh-my-zsh"
+	cp -iva "$HOME/.fzf-tmux.sh" "$HOME/.old_tmux_config_files/.fzf-tmux.sh"
+	cp -iva "$HOME/.bin/tmuxinator.bash" "$HOME/.old_tmux_config_files/.bin/tmuxinator.bash"
+
+
   # Remove old symlinks
   echo "[setup.sh] Remove old symlinks..."
 	rm -f "$HOME/.tmux.conf"
@@ -27,8 +51,8 @@ if [[ $answer != "n" ]] && [[ $answer != "N" ]] ; then
 	rm -f "$HOME/.bashrc"
 	rm -f "$HOME/.zshrc"
 	rm -f "$HOME/.bash_profile"
-  rm -f "$HOME/.fzf-tmux.sh"
-  rm -f "$HOME/.bin/tmuxinator.bash"
+	rm -f "$HOME/.fzf-tmux.sh"
+	rm -f "$HOME/.bin/tmuxinator.bash"
 
   ## Add new symlinks
   echo "[setup.sh] Symlinking config files..."
@@ -40,7 +64,7 @@ if [[ $answer != "n" ]] && [[ $answer != "N" ]] ; then
 	ln -s "$PWD/configs/.bashrc" "$HOME/.bashrc"
 	ln -s "$PWD/configs/.zshrc" "$HOME/.zshrc"
 	ln -s "$PWD/configs/.vimrc" "$HOME/.vimrc"
-  ln -s "$PWD/scripts/.fzf-tmux.sh" "$HOME/.fzf-tmux.sh"
+	ln -s "$PWD/scripts/.fzf-tmux.sh" "$HOME/.fzf-tmux.sh"
 
   mkdir -p ~/.bin
   ln -s "$PWD/scripts/tmuxinator.bash" "$HOME/.bin/tmuxinator.bash"

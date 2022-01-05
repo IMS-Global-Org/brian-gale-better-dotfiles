@@ -1,8 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.asdf/shims:/usr/local/Cellar/tmuxinator/3.0.1/libexec/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/blangston/.oh-my-zsh"
+export ZSH="/Users/blangston/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -68,9 +69,9 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions)
+plugins=(git brew yarn asdf ruby node golang zsh-autosuggestions)
 
-source $ZSH/oh-my-zsh.sh
+source "$ZSH/oh-my-zsh.sh"
 
 # User configuration
 
@@ -135,33 +136,48 @@ reset=$(tput sgr0)
 export PROMPT_COMMAND='__git_ps1 "\[$reset\][\[$blue\]\W\[$reset\]]" " ~ ";'
 # export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
-# settings for rbenv
-#export PATH=/Users/brennicklangston/.rbenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
-#eval export PATH="/Users/brennicklangston/.rbenv/shims:${PATH}"
-#export RBENV_SHELL=zsh
-#source '/usr/local/Cellar/rbenv/1.1.2/libexec/../completions/rbenv.zsh'
-#command rbenv rehash 2>/dev/null
-#rbenv() {
-  #local command
-  #command="${1:-}"
-  #if [ "$#" -gt 0 ]; then
-    #shift
-  #fi
+# Go
+export GOPATH="$HOME/go"
+export PATH="$PATH:$GOPATH/bin"
 
-  #case "$command" in
-  #rehash|shell)
-    #eval "$(rbenv "sh-$command" "$@")";;
-  #*)
-    #command rbenv "$command" "$@";;
-  #esac
-#}
-#alias rspecp="rm -rf coverage && bundle && bin/rails db:environment:set RAILS_ENV=test && RAILS_ENV=test rails parallel:drop && RAILS_ENV=test rails parallel:create && RAILS_ENV=test rails parallel:migrate && RAILS_ENV=test rails parallel:spec"
+alias ecs='ecs-session search'
+alias ecc='ecs-session connect'
+alias dc='docker-compose'
+alias du='docker-compose up'
+alias dr='docker-compose run --rm web '
+alias drb='docker-compose run --rm web bash'
+alias ds='docker-compose run --service-ports --rm web bash'
 
-# Rust programming language settings
-export PATH="$HOME/.cargo/bin:$PATH"
+alias tmx='tmuxinator'
 
-# Ruby RVM Settings
-source "/etc/profile.d/rvm.sh"
+function docker-helpers() {
+  echo 'Docker Compose Helpers'
+  echo 'dc - docker-compose'
+  echo 'du - docker-compose up'
+  echo 'dr - docker-compose run --rm web'
+  echo 'drb - docker-compose run --rm web  bash'
+  echo 'ds - docker-compose run --service-ports --rm web bash'
+}
+
+function ecr_docker_login() {
+  aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 538795852638.dkr.ecr.us-west-2.amazonaws.com
+}
+
+function start_ddt {
+  REPO_DIR=`pwd`
+  cd ~/SiftScience/repos/docker-dev-tools
+  clear
+  du redis rabbit postgres
+  cd $REPO_DIR
+}
+
+function stop_ddt {
+  REPO_DIR=`pwd`
+  cd ~/SiftScience/repos/docker-dev-tools
+  dc down
+  clear
+  cd $REPO_DIR
+}
 
 cat << "EOF"
 
@@ -172,11 +188,4 @@ cat << "EOF"
        ,-'-'   `-=_,-'-'   `-=_,-'-'   `-=_,-'-'   `-=_
 
 EOF
-source "/etc/profile.d/rvm.sh"
-source "/etc/profile.d/rvm.sh"
-source "/etc/profile.d/rvm.sh"
-source "/etc/profile.d/rvm.sh"
-source "/etc/profile.d/rvm.sh"
-source "/etc/profile.d/rvm.sh"
-source "/etc/profile.d/rvm.sh"
-source "/etc/profile.d/rvm.sh"
+export PATH="/usr/local/opt/libpq/bin:$PATH"
