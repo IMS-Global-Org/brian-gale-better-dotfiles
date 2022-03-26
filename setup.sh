@@ -60,8 +60,8 @@ if [[ $answer != "n" ]] && [[ $answer != "N" ]] ; then
 
   ## NVim & Install vim plugins
   echo "[setup.sh] Setting up nvim packages..."
-	mkdir -p ~/.config/nvim 
-	ln -s "$PWD/configs/init.vim" "$HOME/.config/nvim/init.vim"
+  mkdir -p ~/.config/nvim 
+  ln -s "$PWD/configs/init.vim" "$HOME/.config/nvim/init.vim"
   nvim +silent +PlugInstall +qall
   echo "y y n" | ~/.fzf/install
 

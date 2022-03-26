@@ -69,9 +69,9 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git yarn asdf ruby node golang zsh-autosuggestions)
+plugins=(git brew yarn asdf ruby node golang zsh-autosuggestions)
 
-source $ZSH/oh-my-zsh.sh
+source "$ZSH/oh-my-zsh.sh"
 
 # User configuration
 
@@ -135,7 +135,10 @@ reset=$(tput sgr0)
 #export PROMPT_COMMAND='__git_ps1 "\u@\h:\W" "\\\$ ";'
 export PROMPT_COMMAND='__git_ps1 "\[$reset\][\[$blue\]\W\[$reset\]]" " ~ ";'
 
-# Helper functions for Sift/Chargeback work environment
+# Go
+export GOPATH="$HOME/go"
+export PATH="$PATH:$GOPATH/bin"
+
 alias ecs='ecs-session search'
 alias ecc='ecs-session connect'
 alias dc='docker-compose'
@@ -146,7 +149,7 @@ alias ds='docker-compose run --service-ports --rm web bash'
 
 alias tmx='tmuxinator'
 
-function docker_helpers() {
+function docker-helpers() {
   echo 'Docker Compose Helpers'
   echo 'dc - docker-compose'
   echo 'du - docker-compose up'

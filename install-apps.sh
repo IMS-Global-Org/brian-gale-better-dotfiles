@@ -5,7 +5,7 @@ function checkAndInstallPackage() {
     echo "[install-apps] Installing $1..."
     brew install $1
 
-    if [$2 == true]; then
+    if [[$2 == true]]; then
       echo "[install-apps]Force linking $1"
       brew link $1 --force
     fi
@@ -52,11 +52,11 @@ if [[ $answer == "y" ]] || [[ $answer == "Y" ]] ; then
   brew doctor
   brew update
 
-  checkAndInstallPackage "zsh"
-  checkAndInstallPackage "neovim"
+  #checkAndInstallPackage "zsh"
+  #checkAndInstallPackage "neovim"
   checkAndInstallPackage "tmux"
-  checkAndInstallPackage "git"
-  checkAndInstallPackage "redis"
+  #checkAndInstallPackage "git"
+  #checkAndInstallPackage "redis"
   checkAndInstallPackage "terminal-notifier"
   checkAndInstallPackage "mdp"
   checkAndInstallPackage "fzf"
@@ -65,14 +65,14 @@ if [[ $answer == "y" ]] || [[ $answer == "Y" ]] ; then
   checkAndInstallPackage "cmatrix"
   checkAndInstallPackage "tig"
 
-  echo "[install-apps] Installing oh-my-zsh"
-  SH=`which sh`
-  if [[ $SH != "" ]]; then
-    echo "[install-apps] loading oh-my-zsh"
-    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-  else
-    echo "[install-apps] oh-my-zsh installation failed"
-  fi
+  #echo "[install-apps] Installing oh-my-zsh"
+  #SH=`which sh`
+  #if [[ $SH != "" ]]; then
+    #echo "[install-apps] loading oh-my-zsh"
+    #sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  #else
+    #echo "[install-apps] oh-my-zsh installation failed"
+  #fi
 
   echo "[install-apps] checking oh-my-zsh zsh-autosuggestions"
   GIT=`which git`
@@ -83,16 +83,15 @@ if [[ $answer == "y" ]] || [[ $answer == "Y" ]] ; then
     echo "oh-my-zsh history substring search not installed"
   fi
 
-  echo "[install-apps] Checking RVM..."
-
-  RVM=`which rvm`
-  if [[ $RVM == "" ]]; then
-    echo "[install-apps] Installing RVM..."
-    gpg2 --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-    \curl -sSL https://get.rvm.io | bash -s stable
-  else
-    echo "[install-apps] RVM already installed"
-  fi
+  #echo "[install-apps] Checking RVM..."
+  #RVM=`which rvm`
+  #if [[ $RVM == "" ]]; then
+    #echo "[install-apps] Installing RVM..."
+    #gpg2 --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+    #\curl -sSL https://get.rvm.io | bash -s stable
+  #else
+    #echo "[install-apps] RVM already installed"
+  #fi
 
   echo "[install-apps] Setting up additional packages..."
 
