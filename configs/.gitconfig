@@ -1,5 +1,5 @@
 [user]
-	name = Brennick Langston
+	name = BrennickL
 	email = brennick.sci@gmail.com
 
 [alias]
@@ -20,3 +20,7 @@
 	gpgsign = false
 [gpg]
 	program = gpg
+[pull]
+	rebase = false
+[init]
+	defaultBranch = master

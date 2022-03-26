@@ -1,8 +1,9 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+ export PATH=$HOME/.asdf/shims:$HOME/bin:/usr/local/bin:$HOME/SiftScience/repos/devops-tools/bash/bin:$PATH
+ export PATH=$HOME/go/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/blangston/.oh-my-zsh"
+export ZSH="/Users/blangston/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -68,7 +69,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions)
+plugins=(git yarn asdf ruby node golang zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -102,7 +103,6 @@ source $ZSH/oh-my-zsh.sh
 # Appended from .bashrc during environment setup
 # Leave the above space empty
 set -o vi
-source ~/.fzf.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='ag --ignore --hidden --ignore-dir vendor --ignore-dir node-modules -g "" '
 export FZF_DEFAULT_OPTS='
@@ -118,6 +118,7 @@ alias c='clear'
 alias clean_branches="git branch | grep -v "dev" | xargs git branch -D"
 alias v="nvim"
 alias vim="nvim"
+alias tmx="tmuxinator"
 
 GIT_PS1_SHOWUPSTREAM="auto"
 GIT_PS1_SHOWCOLORHINTS="yes"
@@ -133,50 +134,43 @@ reset=$(tput sgr0)
 
 #export PROMPT_COMMAND='__git_ps1 "\u@\h:\W" "\\\$ ";'
 export PROMPT_COMMAND='__git_ps1 "\[$reset\][\[$blue\]\W\[$reset\]]" " ~ ";'
-# export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
-# settings for rbenv
-#export PATH=/Users/brennicklangston/.rbenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
-#eval export PATH="/Users/brennicklangston/.rbenv/shims:${PATH}"
-#export RBENV_SHELL=zsh
-#source '/usr/local/Cellar/rbenv/1.1.2/libexec/../completions/rbenv.zsh'
-#command rbenv rehash 2>/dev/null
-#rbenv() {
-  #local command
-  #command="${1:-}"
-  #if [ "$#" -gt 0 ]; then
-    #shift
-  #fi
+# Helper functions for Sift/Chargeback work environment
+alias ecs='ecs-session search'
+alias ecc='ecs-session connect'
+alias dc='docker-compose'
+alias du='docker-compose up'
+alias dr='docker-compose run --rm web '
+alias drb='docker-compose run --rm web bash'
+alias ds='docker-compose run --service-ports --rm web bash'
 
-  #case "$command" in
-  #rehash|shell)
-    #eval "$(rbenv "sh-$command" "$@")";;
-  #*)
-    #command rbenv "$command" "$@";;
-  #esac
-#}
-#alias rspecp="rm -rf coverage && bundle && bin/rails db:environment:set RAILS_ENV=test && RAILS_ENV=test rails parallel:drop && RAILS_ENV=test rails parallel:create && RAILS_ENV=test rails parallel:migrate && RAILS_ENV=test rails parallel:spec"
+alias tmx='tmuxinator'
 
-# Rust programming language settings
-export PATH="$HOME/.cargo/bin:$PATH"
+function docker_helpers() {
+  echo 'Docker Compose Helpers'
+  echo 'dc - docker-compose'
+  echo 'du - docker-compose up'
+  echo 'dr - docker-compose run --rm web'
+  echo 'drb - docker-compose run --rm web  bash'
+  echo 'ds - docker-compose run --service-ports --rm web bash'
+}
 
-# Ruby RVM Settings
-source "/etc/profile.d/rvm.sh"
+function ecr_docker_login() {
+  aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 538795852638.dkr.ecr.us-west-2.amazonaws.com
+}
 
-cat << "EOF"
+function start_ddt {
+  REPO_DIR=`pwd`
+  cd ~/SiftScience/repos/docker-dev-tools
+  clear
+  du redis rabbit postgres
+  cd $REPO_DIR
+}
 
-       `-:-.   ,-;"`-:-.   ,-;"`-:-.   ,-;"`-:-.   ,-;"
-          `=`,'=/     `=`,'=/     `=`,'=/     `=`,'=/
-            y==/        y==/        y==/        y==/
-          ,=,-<=`.    ,=,-<=`.    ,=,-<=`.    ,=,-<=`.
-       ,-'-'   `-=_,-'-'   `-=_,-'-'   `-=_,-'-'   `-=_
-
-EOF
-source "/etc/profile.d/rvm.sh"
-source "/etc/profile.d/rvm.sh"
-source "/etc/profile.d/rvm.sh"
-source "/etc/profile.d/rvm.sh"
-source "/etc/profile.d/rvm.sh"
-source "/etc/profile.d/rvm.sh"
-source "/etc/profile.d/rvm.sh"
-source "/etc/profile.d/rvm.sh"
+function stop_ddt {
+  REPO_DIR=`pwd`
+  cd ~/SiftScience/repos/docker-dev-tools
+  dc down
+  clear
+  cd $REPO_DIR
+}

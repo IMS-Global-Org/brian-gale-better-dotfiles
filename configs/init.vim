@@ -20,20 +20,19 @@ call plug#begin('~/.vim/plugged')
 
   " Sytax
   Plug 'vim-ruby/vim-ruby'
-  Plug 'rust-lang/rust.vim'
-  " Plug 'yggdroot/indentline'
   Plug 'rstacruz/vim-closer'
   Plug 'jiangmiao/auto-pairs'
   Plug 'scrooloose/nerdcommenter'
-  " Plug 'myusuf3/numbers.vim'
   Plug 'alvan/vim-closetag'
+  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+  Plug 'sheerun/vim-polyglot'
+  Plug 'evanleck/vim-svelte', {'branch': 'main'}
 
   " Git
   Plug 'tpope/vim-fugitive'
   Plug 'airblade/vim-gitgutter'
   Plug 'rhysd/git-messenger.vim'
   Plug 'tveskag/nvim-blame-line'
-  " Plug 'mhinz/vim-signify'
 
   " Views
   Plug 'tomasr/molokai'
@@ -52,21 +51,17 @@ call plug#begin('~/.vim/plugged')
   " VIM
   Plug 'guns/xterm-color-table.vim'
   Plug 'mhinz/vim-startify'
-  " Plug 'junegunn/goyo.vim'
   Plug 'djoshea/vim-autoread'
   Plug 'ap/vim-buftabline'
   Plug 'mkitt/tabline.vim'
-  " Plug 'metakirby5/codi.vim'
+
+  " Collaborative Vim Sessions
+  Plug 'jbyuki/instant.nvim'
 
   Plug 'inkarkat/vim-ingo-library'
 
-  "" Elixir, Erlang, Pheonix
-  "Plug 'elixir-editors/vim-elixir'
-  "Plug 'slashmili/alchemist.vim'
-  "Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-  "" Plug 'MattesGroeger/vim-bookmarks'
-  "Plug 'stephpy/vim-yaml'
+  " Conquer of Completion (Coc)
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
   
 call plug#end()
 
@@ -190,8 +185,10 @@ nnoremap <silent> <Leader>q :close<CR>
 " let g:gitgutter_sign_column_always = 1
 " set signcolumn=yes
 
+" Instant - Collaborative Programming
+let g:instant_username = "BrennickL"
 
-" Supertab
+"" Supertab
 let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:SuperTabCrMapping = 1
 
@@ -213,12 +210,6 @@ map <C-n> :NERDTreeToggle<CR>
 
 " NerdCommenter
 nnoremap <leader>cc NERDComToggleComment<CR>
-
-" GOYO
-" let g:goyo_width = 160
-" let g:goyo_height = 120
-" nnoremap <leader>gg :Goyo<CR>
-" nnoremap <leader>go :Goyo!<CR>
 
 " vim-jsx-pretty
 let g:vim_jsx_pretty_template_tags = ['html', 'jsx', 'js']
