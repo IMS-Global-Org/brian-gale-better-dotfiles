@@ -15,10 +15,16 @@ Must install in order
     - all airline plugins fonts used in vim
     - all fonts used in the 'tmux' title bar
     - any other additional 'Powerline' font dependant systems
-- To get the Tmux battery/cpu/mem/date to show up correctly the following commnd must be executed from within the Tmux env
+## Installation of the TMUX plugins
+- `cd ~/.tmux/plugins/tpm/` and checkout the README.md file and the Installation Section for details
+- To get the Tmux battery/cpu/mem/date to show up correctly the following commnd must be executed from within a Tmux session
+  - `tmux new -s Test` to create an installation/test env
   - `<prefix> + I`
   - `<prefix>` should be the following `Ctl+a` once the `./install-apps.sh` and `./setup.sh` scripts are run
-- The `~/.zshrc` file needs to have the `oh-my-zsh.sh` pathway updated with your local system's user name or Oh-My-Zsh will not load and work correctly
+
+## Installation of Oh-My-Zsh
+- Installation without the use of the scripts is best
+- The `~/.zshrc` file needs to have the `$HOME/.oh-my-zsh/oh-my-zsh.sh` pathway updated with your local file
 
 ## TMux Config
 - Prefix - CTRL+ a
