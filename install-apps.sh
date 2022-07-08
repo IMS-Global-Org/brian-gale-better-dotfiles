@@ -53,7 +53,7 @@ if [[ $answer == "y" ]] || [[ $answer == "Y" ]] ; then
   brew update
 
   #checkAndInstallPackage "zsh"
-  #checkAndInstallPackage "neovim"
+  checkAndInstallPackage "neovim"
   checkAndInstallPackage "tmux"
   #checkAndInstallPackage "git"
   #checkAndInstallPackage "redis"
@@ -64,15 +64,16 @@ if [[ $answer == "y" ]] || [[ $answer == "Y" ]] ; then
   checkAndInstallPackage "npm"
   checkAndInstallPackage "cmatrix"
   checkAndInstallPackage "tig"
+  checkAndInstallPackage "ripgrep"
 
-  #echo "[install-apps] Installing oh-my-zsh"
-  #SH=`which sh`
-  #if [[ $SH != "" ]]; then
-    #echo "[install-apps] loading oh-my-zsh"
-    #sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-  #else
-    #echo "[install-apps] oh-my-zsh installation failed"
-  #fi
+  echo "[install-apps] Installing oh-my-zsh"
+  SH=`which sh`
+  if [[ $SH != "" ]]; then
+    echo "[install-apps] loading oh-my-zsh"
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  else
+    echo "[install-apps] oh-my-zsh installation failed"
+  fi
 
   echo "[install-apps] checking oh-my-zsh zsh-autosuggestions"
   GIT=`which git`
@@ -82,16 +83,6 @@ if [[ $answer == "y" ]] || [[ $answer == "Y" ]] ; then
   else
     echo "oh-my-zsh history substring search not installed"
   fi
-
-  #echo "[install-apps] Checking RVM..."
-  #RVM=`which rvm`
-  #if [[ $RVM == "" ]]; then
-    #echo "[install-apps] Installing RVM..."
-    #gpg2 --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-    #\curl -sSL https://get.rvm.io | bash -s stable
-  #else
-    #echo "[install-apps] RVM already installed"
-  #fi
 
   echo "[install-apps] Setting up additional packages..."
 
