@@ -31,13 +31,13 @@ Must install in order
 - In short.. execute this: `tmux list-windows`
     - Which will give something like this:
         ```
-1: editor* (2 panes) [208x60] [layout 741e,208x60,0,0{104x60,0,0,0,103x60,105,0,5}] @0 (active)
-2: console- (3 panes) [208x60] [layout cd1d,208x60,0,0{104x60,0,0[104x30,0,0,1,104x29,0,31,3],103x60,105,0,4}] @1
+        1: editor* (2 panes) [208x60] [layout 741e,208x60,0,0{104x60,0,0,0,103x60,105,0,5}] @0 (active)
+        2: console- (3 panes) [208x60] [layout cd1d,208x60,0,0{104x60,0,0[104x30,0,0,1,104x29,0,31,3],103x60,105,0,4}] @1
         ```
     - Copy this part to the Tmuxinator "layout" section:
         ```
-741e,208x60,0,0{104x60,0,0,0,103x60,105,0,5}
-cd1d,208x60,0,0{104x60,0,0[104x30,0,0,1,104x29,0,31,3],103x60,105,0,4}
+        741e,208x60,0,0{104x60,0,0,0,103x60,105,0,5}
+        cd1d,208x60,0,0{104x60,0,0[104x30,0,0,1,104x29,0,31,3],103x60,105,0,4}
         ```
 
 ## TMux Config
