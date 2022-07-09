@@ -20,6 +20,20 @@ Must install in order
   - `<prefix>` should be the following `Ctl+a` once the `./install-apps.sh` and `./setup.sh` scripts are run
 - The `~/.zshrc` file needs to have the `oh-my-zsh.sh` pathway updated with your local system's user name or Oh-My-Zsh will not load and work correctly
 
+## TMux Windows for Tmuxinator
+- Follow this link [Templating Tmux with tmuxinator](https://thoughtbot.com/blog/templating-tmux-with-tmuxinator)
+- In short.. execute this: `tmux list-windows`
+    - Which will give something like this:
+        ```
+1: editor* (2 panes) [208x60] [layout 741e,208x60,0,0{104x60,0,0,0,103x60,105,0,5}] @0 (active)
+2: console- (3 panes) [208x60] [layout cd1d,208x60,0,0{104x60,0,0[104x30,0,0,1,104x29,0,31,3],103x60,105,0,4}] @1
+        ```
+    - Copy this part to the Tmuxinator "layout" section:
+        ```
+741e,208x60,0,0{104x60,0,0,0,103x60,105,0,5}
+cd1d,208x60,0,0{104x60,0,0[104x30,0,0,1,104x29,0,31,3],103x60,105,0,4}
+        ```
+
 ## TMux Config
 - Prefix - CTRL+ a
 - Rename Session - <Prefix> + $
