@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
- export PATH=$HOME/.asdf/shims:$HOME/bin:/usr/local/bin:$HOME/SiftScience/repos/devops-tools/bash/bin:$PATH
+ export PATH=$HOME/.asdf/shims:$HOME/bin:/usr/local/bin:$PATH
  export PATH=$HOME/go/bin:$PATH
 
 # Path to your oh-my-zsh installation.
@@ -138,6 +138,9 @@ export PROMPT_COMMAND='__git_ps1 "\[$reset\][\[$blue\]\W\[$reset\]]" " ~ ";'
 # Go
 export GOPATH="$HOME/go"
 export PATH="$PATH:$GOPATH/bin"
+
+# Rust
+export PATH="$PATH:$HOME/.cargo/env"
 
 alias ecs='ecs-session search'
 alias ecc='ecs-session connect'
