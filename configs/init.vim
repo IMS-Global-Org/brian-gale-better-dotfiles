@@ -132,8 +132,8 @@ nnoremap <Leader>O O<Esc>
 set numberwidth=5
 
 " Gutter Colors
-"hi LineNr ctermfg=15 ctermbg=236
-"hi CursorLineNr ctermfg=15 ctermbg=33
+hi LineNr ctermfg=245 ctermbg=254
+hi CursorLineNr ctermfg=255 ctermbg=166
 
 " Cursor line & column
 set cursorcolumn
@@ -143,7 +143,7 @@ set cursorline
 
 " Move lines with arrow keys
 " nnoremap <down> :m .+1<CR>==
-" nnoremap <up> :m .-2<CR>==
+"tmux-neovim-solarized nnoremap <up> :m .-2<CR>==
 " vnoremap <down> :m '>+1<CR>gv=gv
 " vnoremap <up> :m '<-2<CR>gv=gv
 
