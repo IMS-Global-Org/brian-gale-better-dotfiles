@@ -26,7 +26,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'alvan/vim-closetag'
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
   Plug 'sheerun/vim-polyglot'
-  Plug 'evanleck/vim-svelte', {'branch': 'main'}
 
   " Git
   Plug 'tpope/vim-fugitive'
@@ -35,10 +34,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'tveskag/nvim-blame-line'
 
   " Views
-  Plug 'tomasr/molokai'
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
-  Plug 'slim-template/vim-slim'
+  Plug 'altercation/vim-colors-solarized'
+  Plug 'itchyny/lightline.vim'
 
   " Text completion & Syntax Checking
   Plug 'w0rp/ale' " Linting
@@ -54,6 +51,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'djoshea/vim-autoread'
   Plug 'ap/vim-buftabline'
   Plug 'mkitt/tabline.vim'
+  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
   " Collaborative Vim Sessions
   Plug 'jbyuki/instant.nvim'
@@ -75,9 +73,11 @@ nmap <leader>sv :source $MYVIMRC<CR>
 nmap <leader>pp :PlugInstall<CR>
 
 "" Color Scheme
-" colorscheme iceberg
-" colorscheme onedark
-colorscheme molokai
+set background=light
+colorscheme solarized
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ }
 
 " Enable syntax highlighting
 syntax on
@@ -132,14 +132,14 @@ nnoremap <Leader>O O<Esc>
 set numberwidth=5
 
 " Gutter Colors
-hi LineNr ctermfg=15 ctermbg=236
-hi CursorLineNr ctermfg=15 ctermbg=33
+"hi LineNr ctermfg=15 ctermbg=236
+"hi CursorLineNr ctermfg=15 ctermbg=33
 
 " Cursor line & column
 set cursorcolumn
 set cursorline
-hi CursorLine ctermbg=235
-hi CursorColumn ctermbg=235
+"hi CursorLine ctermbg=235
+"hi CursorColumn ctermbg=235
 
 " Move lines with arrow keys
 " nnoremap <down> :m .+1<CR>==
@@ -244,10 +244,6 @@ nnoremap <silent> <Leader>gb :Gblame<CR>
 " Vim Nvim-Blame-Line
 nmap <silent> <leader>b :ToggleBlameLine<CR>
 
-" Airline
-let g:airline_theme='molokai'
-let g:airline_powerline_fonts = 1 
-
 " XTerm Color Table
 nmap <silent> <Leader>ct :XtermColorTable<CR>
 
@@ -273,3 +269,15 @@ set spelllang=en
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
+
+" COC: GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+
+" MarkdownPreview 
+nmap <C-s> <Plug>MarkdownPreview
+nmap <M-s> <Plug>MarkdownPreviewStop
+nmap <C-p> <Plug>MarkdownPreviewToggle
