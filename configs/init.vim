@@ -229,7 +229,12 @@ let g:closetag_regions = {
 " Ale
 map <leader>at :ALEToggle<CR>
 " let g:ale_sign_column_always = 1
-" let g:ale_fixers = {'ruby': ['ruby']}
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+      \ 'typescript': ['prettier', 'eslint'],
+      \ 'javascript': ['prettier', 'eslint'],
+      \ 'ruby': ['ruby'],
+      \ }
 
 " FZF
 " let g:fzf_layout = { 'window': '10split' }
@@ -256,12 +261,6 @@ else
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
-
-" Things I want to try:
-" These 2 packages require python 3 to run
-" Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
-" Plug 'fishbullet/deoplete-ruby'
-
 " Spelling
 set spell
 set spelllang=en
@@ -270,6 +269,8 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
+" COC: Plugin Installation (Run from neovim console line)
+" :CocInstall coc-json coc-tsserver
 " COC: GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -280,4 +281,4 @@ nmap <silent> gr <Plug>(coc-references)
 " MarkdownPreview 
 nmap <C-s> <Plug>MarkdownPreview
 nmap <M-s> <Plug>MarkdownPreviewStop
-nmap <C-p> <Plug>MarkdownPreviewToggle
+" nmap <C-p> <Plug>MarkdownPreviewToggle
