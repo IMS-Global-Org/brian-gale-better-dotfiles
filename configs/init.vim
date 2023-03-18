@@ -73,6 +73,7 @@ nmap <leader>sv :source $MYVIMRC<CR>
 nmap <leader>pp :PlugInstall<CR>
 
 "" Color Scheme
+let g:solarized_termcolors=256
 set background=light
 colorscheme solarized
 let g:lightline = {
