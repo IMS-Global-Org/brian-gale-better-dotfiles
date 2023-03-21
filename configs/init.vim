@@ -72,7 +72,7 @@ nmap <leader>vv :e $MYVIMRC<CR>
 nmap <leader>sv :source $MYVIMRC<CR>
 nmap <leader>pp :PlugInstall<CR>
 
-"" Color Scheme
+" Color Scheme
 let g:solarized_termcolors=256
 set background=light
 colorscheme solarized
@@ -137,7 +137,6 @@ hi LineNr ctermfg=245 ctermbg=254
 hi CursorLineNr ctermfg=255 ctermbg=166
 
 " Cursor line & column
-set cursorcolumn
 set cursorline
 "hi CursorLine ctermbg=235
 "hi CursorColumn ctermbg=235
