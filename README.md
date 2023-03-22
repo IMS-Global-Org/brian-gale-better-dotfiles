@@ -4,6 +4,8 @@
 
 This repo contains my dotfiles, as well as a few scripts used to make maintaining them on multiple machines simpler.
 
+[toc]
+
 ## Installation And Setup
 Must install in order
 - `$ ./install_apps.sh` installs required applications

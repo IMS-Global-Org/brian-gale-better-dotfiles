@@ -26,7 +26,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'alvan/vim-closetag'
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
   Plug 'sheerun/vim-polyglot'
-  Plug 'evanleck/vim-svelte', {'branch': 'main'}
 
   " Git
   Plug 'tpope/vim-fugitive'
@@ -35,10 +34,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'tveskag/nvim-blame-line'
 
   " Views
-  Plug 'tomasr/molokai'
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
-  Plug 'slim-template/vim-slim'
+  Plug 'altercation/vim-colors-solarized'
+  Plug 'itchyny/lightline.vim'
 
   " Text completion & Syntax Checking
   Plug 'w0rp/ale' " Linting
@@ -54,6 +51,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'djoshea/vim-autoread'
   Plug 'ap/vim-buftabline'
   Plug 'mkitt/tabline.vim'
+  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
   " Collaborative Vim Sessions
   Plug 'jbyuki/instant.nvim'
@@ -74,10 +72,13 @@ nmap <leader>vv :e $MYVIMRC<CR>
 nmap <leader>sv :source $MYVIMRC<CR>
 nmap <leader>pp :PlugInstall<CR>
 
-"" Color Scheme
-" colorscheme iceberg
-" colorscheme onedark
-colorscheme molokai
+" Color Scheme
+let g:solarized_termcolors=256
+set background=light
+colorscheme solarized
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ }
 
 " Enable syntax highlighting
 syntax on
@@ -132,18 +133,17 @@ nnoremap <Leader>O O<Esc>
 set numberwidth=5
 
 " Gutter Colors
-hi LineNr ctermfg=15 ctermbg=236
-hi CursorLineNr ctermfg=15 ctermbg=33
+hi LineNr ctermfg=245 ctermbg=254
+hi CursorLineNr ctermfg=255 ctermbg=166
 
 " Cursor line & column
-set cursorcolumn
 set cursorline
-hi CursorLine ctermbg=235
-hi CursorColumn ctermbg=235
+"hi CursorLine ctermbg=235
+"hi CursorColumn ctermbg=235
 
 " Move lines with arrow keys
 " nnoremap <down> :m .+1<CR>==
-" nnoremap <up> :m .-2<CR>==
+"tmux-neovim-solarized nnoremap <up> :m .-2<CR>==
 " vnoremap <down> :m '>+1<CR>gv=gv
 " vnoremap <up> :m '<-2<CR>gv=gv
 
@@ -229,7 +229,12 @@ let g:closetag_regions = {
 " Ale
 map <leader>at :ALEToggle<CR>
 " let g:ale_sign_column_always = 1
-" let g:ale_fixers = {'ruby': ['ruby']}
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+      \ 'typescript': ['prettier', 'eslint'],
+      \ 'javascript': ['prettier', 'eslint'],
+      \ 'ruby': ['ruby'],
+      \ }
 
 " FZF
 " let g:fzf_layout = { 'window': '10split' }
@@ -244,10 +249,6 @@ nnoremap <silent> <Leader>gb :Gblame<CR>
 " Vim Nvim-Blame-Line
 nmap <silent> <leader>b :ToggleBlameLine<CR>
 
-" Airline
-let g:airline_theme='molokai'
-let g:airline_powerline_fonts = 1 
-
 " XTerm Color Table
 nmap <silent> <Leader>ct :XtermColorTable<CR>
 
@@ -260,12 +261,6 @@ else
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
-
-" Things I want to try:
-" These 2 packages require python 3 to run
-" Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
-" Plug 'fishbullet/deoplete-ruby'
-
 " Spelling
 set spell
 set spelllang=en
@@ -273,3 +268,17 @@ set spelllang=en
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
+
+" COC: Plugin Installation (Run from neovim console line)
+" :CocInstall coc-json coc-tsserver
+" COC: GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+
+" MarkdownPreview 
+nmap <C-s> <Plug>MarkdownPreview
+nmap <M-s> <Plug>MarkdownPreviewStop
+" nmap <C-p> <Plug>MarkdownPreviewToggle
