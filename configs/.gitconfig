@@ -12,6 +12,7 @@
   df = diff
   lg = log -p
   po = push origin
+	hs = log --pretty='%C(yellow)%h %C(cyan)%cd %Cblue%aN%C(auto)%d %Creset%s' --graph --date=relative --date-order
 [push]
 	default = simple
 [core]
@@ -21,6 +22,12 @@
 [gpg]
 	program = gpg
 [pull]
-	rebase = false
+	rebase = true
 [init]
 	defaultBranch = master
+[diff]
+	tool = nvimdiff
+[merge]
+	tool = nvimdiff
+[difftool]
+	prompt = false

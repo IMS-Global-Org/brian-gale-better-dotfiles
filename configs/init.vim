@@ -36,8 +36,10 @@ call plug#begin('~/.vim/plugged')
 
   " Views
   Plug 'tomasr/molokai'
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
+  Plug 'itchyny/lightline.vim'
+  "Plug 'vim-airline/vim-airline'
+  "Plug 'vim-airline/vim-airline-themes'
+  Plug 'powerline/powerline-fonts'
   Plug 'slim-template/vim-slim'
 
   " Text completion & Syntax Checking
@@ -54,6 +56,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'djoshea/vim-autoread'
   Plug 'ap/vim-buftabline'
   Plug 'mkitt/tabline.vim'
+  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
   " Collaborative Vim Sessions
   Plug 'jbyuki/instant.nvim'
@@ -78,9 +81,13 @@ nmap <leader>pp :PlugInstall<CR>
 " colorscheme iceberg
 " colorscheme onedark
 colorscheme molokai
+let g:lightline = {
+      \ 'colorscheme': 'molokai',
+      \ }
 
 " Enable syntax highlighting
 syntax on
+set re=0
 " set termguicolors
 
 " Enable filetype detection pugin and indent
@@ -228,6 +235,15 @@ let g:closetag_regions = {
 
 " Ale
 map <leader>at :ALEToggle<CR>
+let g:ale_fixers = {
+      \ 'javascript': ['eslint'],
+      \ 'typescript': ['eslint'],
+      \ 'javascriptreact': ['eslint'],
+      \ 'typescriptreact': ['eslint'],
+      \ }
+" let g:ale_sign_error = '❌'
+" let g:ale_sign_warning = '⚠️'
+let g:ale_fix_on_save = 1
 " let g:ale_sign_column_always = 1
 " let g:ale_fixers = {'ruby': ['ruby']}
 
@@ -244,9 +260,9 @@ nnoremap <silent> <Leader>gb :Gblame<CR>
 " Vim Nvim-Blame-Line
 nmap <silent> <leader>b :ToggleBlameLine<CR>
 
-" Airline
-let g:airline_theme='molokai'
-let g:airline_powerline_fonts = 1 
+"" Airline
+"let g:airline_theme='molokai'
+"let g:airline_powerline_fonts = 1 
 
 " XTerm Color Table
 nmap <silent> <Leader>ct :XtermColorTable<CR>
@@ -272,4 +288,24 @@ set spelllang=en
 
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
+endif
+
+" Markdown Preview Settings
+"nmap <C-s> <Plug>MarkdownPreview
+"nmap <M-s> <Plug>MarkdownPreviewStop
+"nmap <C-p> <Plug>MarkdownPreviewToggle
+
+" copy current file name (relative/absolute) to system clipboard
+if has("mac") || has("gui_macvim") || has("gui_mac")
+  " relative path  (src/foo.txt)
+  nnoremap <leader>cf :let @*=expand("%")<CR>
+
+  " absolute path  (/something/src/foo.txt)
+  nnoremap <leader>cF :let @*=expand("%:p")<CR>
+
+  " filename       (foo.txt)
+  nnoremap <leader>ct :let @*=expand("%:t")<CR>
+
+  " directory name (/something/src)
+  nnoremap <leader>ch :let @*=expand("%:p:h")<CR>
 endif
