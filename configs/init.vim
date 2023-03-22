@@ -82,6 +82,7 @@ let g:lightline = {
 
 " Enable syntax highlighting
 syntax on
+set re=0
 " set termguicolors
 
 " Enable filetype detection pugin and indent
@@ -228,7 +229,14 @@ let g:closetag_regions = {
 
 " Ale
 map <leader>at :ALEToggle<CR>
-" let g:ale_sign_column_always = 1
+let g:ale_fixers = {
+      \ 'javascript': ['eslint'],
+      \ 'typescript': ['eslint'],
+      \ 'javascriptreact': ['eslint'],
+      \ 'typescriptreact': ['eslint'],
+      \ }
+" let g:ale_sign_error = '❌'
+" let g:ale_sign_warning = '⚠️'
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
       \ 'typescript': ['prettier', 'eslint'],
@@ -269,6 +277,21 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
+" FilePaths: copy current file name (relative/absolute) to system clipboard
+if has("mac") || has("gui_macvim") || has("gui_mac")
+  " relative path  (src/foo.txt)
+  nnoremap <leader>cf :let @*=expand("%")<CR>
+
+  " absolute path  (/something/src/foo.txt)
+  nnoremap <leader>cF :let @*=expand("%:p")<CR>
+
+  " filename       (foo.txt)
+  nnoremap <leader>ct :let @*=expand("%:t")<CR>
+
+  " directory name (/something/src)
+  nnoremap <leader>ch :let @*=expand("%:p:h")<CR>
+endif
+
 " COC: Plugin Installation (Run from neovim console line)
 " :CocInstall coc-json coc-tsserver
 " COC: GoTo code navigation.
@@ -278,7 +301,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 
-" MarkdownPreview 
+" MarkdownPreview: Pluging
 nmap <C-s> <Plug>MarkdownPreview
 nmap <M-s> <Plug>MarkdownPreviewStop
 " nmap <C-p> <Plug>MarkdownPreviewToggle
