@@ -41,6 +41,11 @@ Must install in order
         741e,208x60,0,0{104x60,0,0,0,103x60,105,0,5}
         cd1d,208x60,0,0{104x60,0,0[104x30,0,0,1,104x29,0,31,3],103x60,105,0,4}
         ```
+## COC: Installation
+- Must run the following from the NeoVim command line to install and configure coc correctly
+```vim
+:CocInstall coc-json coc-tsserver
+```
 
 ## TMux Config
 - Prefix - CTRL+ a
