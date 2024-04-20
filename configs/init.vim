@@ -26,6 +26,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'alvan/vim-closetag'
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
   Plug 'sheerun/vim-polyglot'
+  Plug 'vim-scripts/indentpython.vim'
+  Plug 'psf/black', { 'branch': 'stable' }
 
   " Git
   Plug 'tpope/vim-fugitive'
@@ -60,7 +62,7 @@ call plug#begin('~/.vim/plugged')
 
   " Conquer of Completion (Coc)
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  
+
 call plug#end()
 
 """""""""
@@ -105,7 +107,7 @@ set title
 set number
 
 " Toggle number column
-nmap <leader>n :set invnumber<CR> 
+nmap <leader>n :set invnumber<CR>
 
 " Automatcially reload a file that's been saved elsewhere
 set autoread
@@ -226,15 +228,23 @@ let g:closetag_regions = {
     \ 'javascript.js': 'jsxRegion',
     \ }
 
-" Ale
+" Ale - Turns off/on ALE
 map <leader>at :ALEToggle<CR>
 " let g:ale_sign_column_always = 1
-let g:ale_fix_on_save = 1
+" NOTE
+"   All these fixers are required. The typescriptreact
+"   and javascriptreact are required for formatting
+"   and *.tsx or *.jsx files.
 let g:ale_fixers = {
       \ 'typescript': ['prettier', 'eslint'],
+      \ 'typescriptreact': ['prettier', 'eslint'],
       \ 'javascript': ['prettier', 'eslint'],
-      \ 'ruby': ['ruby'],
+      \ 'javascriptreact': ['prettier', 'eslint'],
+      \ 'ruby': ['prettier', 'rubocop'],
       \ }
+let g:ale_linters_explicit = 1
+let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 1
 
 " FZF
 " let g:fzf_layout = { 'window': '10split' }
@@ -271,6 +281,17 @@ endif
 
 " COC: Plugin Installation (Run from neovim console line)
 " :CocInstall coc-json coc-tsserver
+let g:coc_global_extensions = [
+      \ 'coc-tsserver',
+      \ 'coc-marketplace',
+      \ 'coc-json',
+      \ 'coc-solargraph',
+      \ 'coc-go',
+      \ 'coc-pyright',
+      \ 'coc-css',
+      \ 'coc-eslint',
+      \ 'coc-html',
+      \ ]
 " COC: GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -278,7 +299,15 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 
-" MarkdownPreview 
+" MarkdownPreview
 nmap <C-s> <Plug>MarkdownPreview
 nmap <M-s> <Plug>MarkdownPreviewStop
 " nmap <C-p> <Plug>MarkdownPreviewToggle
+
+" PYTHON: NVIM config
+" Figure out the system Python for Neovim.
+if exists("$VIRTUAL_ENV")
+    let g:python3_host_prog=substitute(system("which python3"), "\n", '', 'g')
+else
+    let g:python3_host_prog=substitute(system("which -a python3 | head -n2 | tail -n1"), "\n", '', 'g')
+endif
