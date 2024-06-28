@@ -3,7 +3,6 @@
 	email = brennick.sci@gmail.com
 
 [alias]
-  st = status
   ci = commit
   br = branch
   co = checkout
@@ -12,11 +11,12 @@
   df = diff
   lg = log -p
   po = push origin
-	hs = log --pretty='%C(yellow)%h %C(cyan)%cd %Cblue%aN%C(auto)%d %Creset%s' --graph --date=relative --date-order
+  st = status -s
 [push]
 	default = simple
 [core]
 	excludesfile = /Users/brennicklangston/.gitignore_global
+	pager = delta
 [commit]
 	gpgsign = false
 [gpg]
@@ -25,9 +25,18 @@
 	rebase = true
 [init]
 	defaultBranch = master
-[diff]
-	tool = nvimdiff
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	side-by-side = true
+	line-numbers = true
+	light = true
 [merge]
+	conflictstyle = diff3
+	tool = nvimdiff
+[diff]
+	colorMoved = default
 	tool = nvimdiff
 [difftool]
 	prompt = false

@@ -1,6 +1,5 @@
 # If you come from bash you might have to change your $PATH.
  export PATH=$HOME/.asdf/shims:$HOME/bin:/usr/local/bin:$PATH
- export PATH=$HOME/go/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -135,15 +134,6 @@ reset=$(tput sgr0)
 #export PROMPT_COMMAND='__git_ps1 "\u@\h:\W" "\\\$ ";'
 export PROMPT_COMMAND='__git_ps1 "\[$reset\][\[$blue\]\W\[$reset\]]" " ~ ";'
 
-# Go
-export GOPATH="$HOME/go"
-export PATH="$PATH:$GOPATH/bin"
-
-# Rust
-export PATH="$PATH:$HOME/.cargo/env"
-
-alias ecs='ecs-session search'
-alias ecc='ecs-session connect'
 alias dc='docker-compose'
 alias du='docker-compose up'
 alias dr='docker-compose run --rm web '
@@ -159,24 +149,4 @@ function docker-helpers() {
   echo 'dr - docker-compose run --rm web'
   echo 'drb - docker-compose run --rm web  bash'
   echo 'ds - docker-compose run --service-ports --rm web bash'
-}
-
-function ecr_docker_login() {
-  aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 538795852638.dkr.ecr.us-west-2.amazonaws.com
-}
-
-function start_ddt {
-  REPO_DIR=`pwd`
-  cd ~/SiftScience/repos/docker-dev-tools
-  clear
-  du redis rabbit postgres
-  cd $REPO_DIR
-}
-
-function stop_ddt {
-  REPO_DIR=`pwd`
-  cd ~/SiftScience/repos/docker-dev-tools
-  dc down
-  clear
-  cd $REPO_DIR
 }

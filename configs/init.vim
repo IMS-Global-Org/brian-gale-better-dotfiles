@@ -20,11 +20,11 @@ call plug#begin('~/.vim/plugged')
 
   " Sytax
   Plug 'vim-ruby/vim-ruby'
+  Plug 'vim-crystal/vim-crystal'
   Plug 'rstacruz/vim-closer'
   Plug 'jiangmiao/auto-pairs'
   Plug 'scrooloose/nerdcommenter'
   Plug 'alvan/vim-closetag'
-  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
   Plug 'sheerun/vim-polyglot'
 
   " Git
@@ -60,7 +60,7 @@ call plug#begin('~/.vim/plugged')
 
   " Conquer of Completion (Coc)
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  
+
 call plug#end()
 
 """""""""
@@ -106,7 +106,7 @@ set title
 set number
 
 " Toggle number column
-nmap <leader>n :set invnumber<CR> 
+nmap <leader>n :set invnumber<CR>
 
 " Automatcially reload a file that's been saved elsewhere
 set autoread
@@ -227,22 +227,23 @@ let g:closetag_regions = {
     \ 'javascript.js': 'jsxRegion',
     \ }
 
-" Ale
+" Ale - Turns off/on ALE
 map <leader>at :ALEToggle<CR>
-let g:ale_fixers = {
-      \ 'javascript': ['eslint'],
-      \ 'typescript': ['eslint'],
-      \ 'javascriptreact': ['eslint'],
-      \ 'typescriptreact': ['eslint'],
-      \ }
-" let g:ale_sign_error = '❌'
-" let g:ale_sign_warning = '⚠️'
-let g:ale_fix_on_save = 1
+" let g:ale_sign_column_always = 1
+" NOTE
+"   All these fixers are required. The typescriptreact
+"   and javascriptreact are required for formatting
+"   and *.tsx or *.jsx files.
 let g:ale_fixers = {
       \ 'typescript': ['prettier', 'eslint'],
+      \ 'typescriptreact': ['prettier', 'eslint'],
       \ 'javascript': ['prettier', 'eslint'],
-      \ 'ruby': ['ruby'],
+      \ 'javascriptreact': ['prettier', 'eslint'],
+      \ 'ruby': ['prettier', 'rubocop'],
       \ }
+let g:ale_linters_explicit = 1
+let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 1
 
 " FZF
 " let g:fzf_layout = { 'window': '10split' }
@@ -294,6 +295,15 @@ endif
 
 " COC: Plugin Installation (Run from neovim console line)
 " :CocInstall coc-json coc-tsserver
+let g:coc_global_extensions = [
+      \ 'coc-tsserver',
+      \ 'coc-marketplace',
+      \ 'coc-json',
+      \ 'coc-solargraph',
+      \ 'coc-css',
+      \ 'coc-eslint',
+      \ 'coc-html',
+      \ ]
 " COC: GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
