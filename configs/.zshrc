@@ -138,11 +138,6 @@ export PROMPT_COMMAND='__git_ps1 "\[$reset\][\[$blue\]\W\[$reset\]]" " ~ ";'
 export GOPATH="$HOME/go"
 export PATH="$PATH:$GOPATH/bin"
 
-# Python
-export PATH="$PATH:/Users/b/.local/bin"
-
-alias ecs='ecs-session search'
-alias ecc='ecs-session connect'
 alias dc='docker-compose'
 alias du='docker-compose up'
 alias dr='docker-compose run --rm web '

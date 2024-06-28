@@ -24,10 +24,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'jiangmiao/auto-pairs'
   Plug 'scrooloose/nerdcommenter'
   Plug 'alvan/vim-closetag'
-  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
   Plug 'sheerun/vim-polyglot'
-  Plug 'vim-scripts/indentpython.vim'
-  Plug 'psf/black', { 'branch': 'stable' }
 
   " Git
   Plug 'tpope/vim-fugitive'
@@ -286,8 +283,6 @@ let g:coc_global_extensions = [
       \ 'coc-marketplace',
       \ 'coc-json',
       \ 'coc-solargraph',
-      \ 'coc-go',
-      \ 'coc-pyright',
       \ 'coc-css',
       \ 'coc-eslint',
       \ 'coc-html',
@@ -303,11 +298,3 @@ nmap <silent> gr <Plug>(coc-references)
 nmap <C-s> <Plug>MarkdownPreview
 nmap <M-s> <Plug>MarkdownPreviewStop
 " nmap <C-p> <Plug>MarkdownPreviewToggle
-
-" PYTHON: NVIM config
-" Figure out the system Python for Neovim.
-if exists("$VIRTUAL_ENV")
-    let g:python3_host_prog=substitute(system("which python3"), "\n", '', 'g')
-else
-    let g:python3_host_prog=substitute(system("which -a python3 | head -n2 | tail -n1"), "\n", '', 'g')
-endif
