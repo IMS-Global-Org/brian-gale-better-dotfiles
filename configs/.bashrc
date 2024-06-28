@@ -48,3 +48,4 @@ cat << "EOF"
 ... to boldly go where no one has gone before ...
 
 EOF
+. "$HOME/.cargo/env"

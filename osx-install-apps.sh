@@ -61,6 +61,7 @@ if [[ $answer == "y" ]] || [[ $answer == "Y" ]] ; then
   checkAndInstallPackage "mdp"
   checkAndInstallPackage "fzf"
   checkAndInstallPackage "the_silver_searcher"
+  checkAndInstallPackage "ripgrep"
   checkAndInstallPackage "npm"
   checkAndInstallPackage "cmatrix"
   checkAndInstallPackage "tig"

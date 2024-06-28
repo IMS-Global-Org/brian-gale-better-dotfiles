@@ -28,6 +28,25 @@ Must install in order
 - Installation without the use of the scripts is best
 - The `~/.zshrc` file needs to have the `$HOME/.oh-my-zsh/oh-my-zsh.sh` pathway updated with your local file
 
+## TMux Windows for Tmuxinator
+- Follow this link [Templating Tmux with tmuxinator](https://thoughtbot.com/blog/templating-tmux-with-tmuxinator)
+- In short.. execute this: `tmux list-windows`
+    - Which will give something like this:
+        ```
+        1: editor* (2 panes) [208x60] [layout 741e,208x60,0,0{104x60,0,0,0,103x60,105,0,5}] @0 (active)
+        2: console- (3 panes) [208x60] [layout cd1d,208x60,0,0{104x60,0,0[104x30,0,0,1,104x29,0,31,3],103x60,105,0,4}] @1
+        ```
+    - Copy this part to the Tmuxinator "layout" section:
+        ```
+        741e,208x60,0,0{104x60,0,0,0,103x60,105,0,5}
+        cd1d,208x60,0,0{104x60,0,0[104x30,0,0,1,104x29,0,31,3],103x60,105,0,4}
+        ```
+## COC: Installation
+- Must run the following from the NeoVim command line to install and configure coc correctly
+```vim
+:CocInstall coc-json coc-tsserver
+```
+
 ## TMux Config
 - Prefix - CTRL+ a
 - Rename Session - <Prefix> + $

@@ -11,7 +11,7 @@
   df = diff
   lg = log -p
   po = push origin
-	st = status -s
+  st = status -s
 [push]
 	default = simple
 [core]
@@ -22,7 +22,7 @@
 [gpg]
 	program = gpg
 [pull]
-	rebase = false
+	rebase = true
 [init]
 	defaultBranch = master
 [interactive]
@@ -34,5 +34,9 @@
 	light = true
 [merge]
 	conflictstyle = diff3
+	tool = nvimdiff
 [diff]
 	colorMoved = default
+	tool = nvimdiff
+[difftool]
+	prompt = false

@@ -20,6 +20,7 @@ call plug#begin('~/.vim/plugged')
 
   " Sytax
   Plug 'vim-ruby/vim-ruby'
+  Plug 'vim-crystal/vim-crystal'
   Plug 'rstacruz/vim-closer'
   Plug 'jiangmiao/auto-pairs'
   Plug 'scrooloose/nerdcommenter'
@@ -81,6 +82,7 @@ let g:lightline = {
 
 " Enable syntax highlighting
 syntax on
+set re=0
 " set termguicolors
 
 " Enable filetype detection pugin and indent
@@ -276,6 +278,21 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
+" FilePaths: copy current file name (relative/absolute) to system clipboard
+if has("mac") || has("gui_macvim") || has("gui_mac")
+  " relative path  (src/foo.txt)
+  nnoremap <leader>cf :let @*=expand("%")<CR>
+
+  " absolute path  (/something/src/foo.txt)
+  nnoremap <leader>cF :let @*=expand("%:p")<CR>
+
+  " filename       (foo.txt)
+  nnoremap <leader>ct :let @*=expand("%:t")<CR>
+
+  " directory name (/something/src)
+  nnoremap <leader>ch :let @*=expand("%:p:h")<CR>
+endif
+
 " COC: Plugin Installation (Run from neovim console line)
 " :CocInstall coc-json coc-tsserver
 let g:coc_global_extensions = [
@@ -294,7 +311,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 
-" MarkdownPreview
+" MarkdownPreview: Pluging
 nmap <C-s> <Plug>MarkdownPreview
 nmap <M-s> <Plug>MarkdownPreviewStop
 " nmap <C-p> <Plug>MarkdownPreviewToggle
