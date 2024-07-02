@@ -34,7 +34,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'tveskag/nvim-blame-line'
 
   " Views
-  Plug 'altercation/vim-colors-solarized'
   Plug 'itchyny/lightline.vim'
 
   " Text completion & Syntax Checking
@@ -72,20 +71,27 @@ nmap <leader>vv :e $MYVIMRC<CR>
 nmap <leader>sv :source $MYVIMRC<CR>
 nmap <leader>pp :PlugInstall<CR>
 
-" Color Scheme
-let g:solarized_termcolors=256
+" Enable syntax highlighting
+syntax on
+set re=0
+set termguicolors
+
+" Solarized8 Color Scheme Installation and Configuration
+"   - [Solarized8 GitHub](https://github.com/lifepillar/vim-solarized8?tab=readme-ov-file#solarized-8-for-vim)
+"   - [Installation](https://github.com/lifepillar/vim-solarized8?tab=readme-ov-file#installation)
+"   - [Configuration](https://github.com/lifepillar/vim-solarized8?tab=readme-ov-file#options)
+"   - NOTES
+"     - Just follow the installation directions showing how to clone the git
+"     repository. No other packages are required.
+"     - Do not try to alter the terminals handling of the colors. Just use
+"     iTerm2 Solarized color schema
+colorscheme solarized8
 set background=light
-colorscheme solarized
 let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ }
 
-" Enable syntax highlighting
-syntax on
-set re=0
-" set termguicolors
-
-" Enable filetype detection pugin and indent
+" Enable filetype detection plugin and indent
 filetype plugin indent on
 
 " Indentation

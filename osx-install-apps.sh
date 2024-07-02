@@ -5,7 +5,7 @@ function checkAndInstallPackage() {
     echo "[install-apps] Installing $1..."
     brew install $1
 
-    if [$2 == true]; then
+    if [[ $2 == true ]]; then
       echo "[install-apps]Force linking $1"
       brew link $1 --force
     fi
